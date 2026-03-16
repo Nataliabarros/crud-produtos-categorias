@@ -1,14 +1,29 @@
 package com.crud.produtos.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.crud.produtos.model.Categoria;
+import com.crud.produtos.repository.CategoriaRepository;
 
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
+@RequestMapping("/categorias")
 public class CategoriaController {
 
-    @GetMapping("/categorias")
-    public String listarCategorias() {
-        return "API funcionando!";
+    private final CategoriaRepository categoriaRepository;
+
+    public CategoriaController(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
     }
 
+    @GetMapping
+    public List<Categoria> listarCategorias() {
+        return categoriaRepository.findAll();
+    }
+
+    @PostMapping
+    public Categoria criarCategoria(@RequestBody Categoria categoria) {
+        return categoriaRepository.save(categoria);
+    }
 }

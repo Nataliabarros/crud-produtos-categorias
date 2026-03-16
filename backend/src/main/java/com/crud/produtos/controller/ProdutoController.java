@@ -4,9 +4,9 @@ import com.crud.produtos.model.Produto;
 import com.crud.produtos.repository.ProdutoRepository;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
