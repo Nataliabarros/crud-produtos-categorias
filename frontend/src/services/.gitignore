@@ -1,0 +1,17 @@
+# Node
+node_modules/
+
+# Build
+dist/
+
+# Java
+target/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
