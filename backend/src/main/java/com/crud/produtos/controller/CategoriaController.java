@@ -26,4 +26,8 @@ public class CategoriaController {
     public Categoria criarCategoria(@RequestBody Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
+    @DeleteMapping("/{id}")
+    public void deletarCategoria(@PathVariable Long id) {
+        categoriaRepository.deleteById(id);
+    }
 }
