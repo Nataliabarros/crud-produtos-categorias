@@ -32,6 +32,22 @@ watch(() => props.produtoParaEditar, (novoProduto: any) => {
 
 const salvarProduto = async () => {
 
+  // 🔴 VALIDAÇÕES
+  if (!nome.value.trim()) {
+    alert("O nome do produto é obrigatório!")
+    return
+  }
+
+  if (preco.value <= 0) {
+    alert("O preço deve ser maior que zero!")
+    return
+  }
+
+  if (!categoriaSelecionada.value) {
+    alert("Selecione uma categoria!")
+    return
+  }
+
   const produto = {
     id: id.value,
     nome: nome.value,
