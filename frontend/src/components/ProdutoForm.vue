@@ -2,6 +2,7 @@
 import { ref, onMounted, watch } from "vue"
 import { criarProduto } from "../services/produtoService"
 import { listarCategorias } from "../services/categoriaService"
+import { criarCategoria } from "../services/categoriaService"
 
 const props = defineProps({
   produtoParaEditar: Object
@@ -14,6 +15,7 @@ const preco = ref(0)
 const categorias = ref([])
 const categoriaSelecionada = ref(null)
 const id = ref<number | null>(null)
+const novaCategoria = ref("")
 
 const carregarCategorias = async () => {
   categorias.value = await listarCategorias()
@@ -84,6 +86,28 @@ const cancelarEdicao = () => {
   id.value = null
 }
 
+const criarNovaCategoria = async () => {
+
+  if (!novaCategoria.value.trim()) {
+    alert("Digite o nome da categoria")
+    return
+  }
+
+  const categoriaCriada = await criarCategoria({
+    nome: novaCategoria.value
+  })
+
+  alert("Categoria criada!")
+
+  novaCategoria.value = ""
+
+  //  atualiza lista
+  await carregarCategorias()
+
+  // seleciona automaticamente
+  categoriaSelecionada.value = categoriaCriada.id
+}
+
 </script>
 
 <template>
@@ -93,6 +117,18 @@ const cancelarEdicao = () => {
     <input v-model="nome" placeholder="Nome do produto" />
 
     <input v-model="preco" type="number" placeholder="Preço" />
+    <hr>
+     
+
+    <h3>Nova Categoria</h3>
+
+    <input v-model="novaCategoria" placeholder="Nova categoria" />
+
+    <button @click="criarNovaCategoria">
+      Criar Categoria
+    </button>
+
+
 
     <!-- SELECT DE CATEGORIA -->
     <select v-model="categoriaSelecionada">
