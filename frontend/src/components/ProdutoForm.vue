@@ -60,6 +60,14 @@ const salvarProduto = async () => {
   categoriaSelecionada.value = null
   id.value = null
 }
+
+const cancelarEdicao = () => {
+  nome.value = ""
+  preco.value = 0
+  categoriaSelecionada.value = null
+  id.value = null
+}
+
 </script>
 
 <template>
@@ -84,6 +92,9 @@ const salvarProduto = async () => {
 
     <button @click="salvarProduto">
       Salvar
+    </button>
+    <button v-if="id" @click="cancelarEdicao">
+      Cancelar
     </button>
   </div>
 </template>
