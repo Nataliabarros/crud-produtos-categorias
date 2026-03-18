@@ -112,7 +112,7 @@ const criarNovaCategoria = async () => {
 
 <template>
   <div>
-    <h2>Criar / Editar Produto</h2>
+    <h1>CRIAR PRODUTO</h1>
 
     <input v-model="nome" placeholder="Nome do produto" />
 
@@ -120,7 +120,7 @@ const criarNovaCategoria = async () => {
     <hr>
      
 
-    <h3>Nova Categoria</h3>
+    <h3>Selecione uma nova categoria ou crie uma nova </h3>
 
     <input v-model="novaCategoria" placeholder="Nova categoria" />
 
@@ -141,11 +141,15 @@ const criarNovaCategoria = async () => {
         {{ categoria.nome }}
       </option>
     </select>
-
-    <button @click="salvarProduto">
-      Salvar
+    
+    <button @click="salvarProduto"
+    style="background-color: green; color: white;">
+      Salvar produto
     </button>
-    <button v-if="id" @click="cancelarEdicao">
+
+
+    <button v-if="id" @click="cancelarEdicao" >
+      
       Cancelar
     </button>
   </div>

@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue"
 import { listarProdutos, deletarProduto } from "../services/produtoService"
 import ProdutoForm from "../components/ProdutoForm.vue"
 
+
 const produtos = ref([])
 
 // 👉 produto selecionado para edição
@@ -45,7 +46,7 @@ onMounted(() => {
       :produtoParaEditar="produtoSelecionado"
     />
 
-    <h1>Lista de Produtos</h1>
+    <h1>LISTAR PRODUTOS</h1>
 
     <!-- TABELA -->
     <table border="1" cellpadding="8">
@@ -76,9 +77,11 @@ onMounted(() => {
             </button>
 
             <!-- BOTÃO EXCLUIR -->
-            <button @click="removerProduto(produto.id)">
+            <button @click="removerProduto(produto.id)" 
+            style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
               Excluir
             </button>
+
 
           </td>
 

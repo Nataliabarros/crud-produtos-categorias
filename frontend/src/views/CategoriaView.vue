@@ -21,7 +21,7 @@ const removerCategoria = async (id: number) => {
   await carregarCategorias()
 }
 
-// quando abrir tela
+// ao abrir
 onMounted(() => {
   carregarCategorias()
 })
@@ -33,6 +33,7 @@ onMounted(() => {
     <h1>Lista de Categorias</h1>
 
     <table border="1" cellpadding="8">
+
       <thead>
         <tr>
           <th>Nome</th>
@@ -42,6 +43,7 @@ onMounted(() => {
 
       <tbody>
         <tr v-for="categoria in categorias" :key="categoria.id">
+
           <td>{{ categoria.nome }}</td>
 
           <td>
@@ -49,8 +51,10 @@ onMounted(() => {
               Excluir
             </button>
           </td>
+
         </tr>
       </tbody>
+
     </table>
 
   </div>
